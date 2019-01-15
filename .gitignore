@@ -1,0 +1,7 @@
+node_modules/
+.idea/
+.vscode/
+
+#ignore files in the build folders
+build/
+public/build/
