@@ -1,7 +1,11 @@
 import * as React from "react";
-import {Link} from "react-router-dom";
-import {Row, Col, Grid, Panel} from "react-bootstrap";
-import {Counter} from "./Counter";
+
+//ag-grid
+import 'ag-grid-community/dist/styles/ag-grid.css';
+import 'ag-grid-community/dist/styles/ag-theme-balham.css'
+import {AgGridReact} from "ag-grid-react";
+import {GridOptions} from "ag-grid-community";
+import "ag-grid-enterprise";
 
 export class Home extends React.Component<{}> {
     constructor(p: {}) {
@@ -10,24 +14,12 @@ export class Home extends React.Component<{}> {
 
     render() {
         return (
-            <Grid>
-                <Row>
-                    <Col xs={6}>
-                        <Panel>
-                            <Panel.Heading>App Root</Panel.Heading>
-                            <Panel.Body>
-                                <Counter/>
-                            </Panel.Body>
-                            <Panel.Footer>
-                                <Link to='/channels'>Go to channel list</Link>
-                            </Panel.Footer>
-                        </Panel>
-                    </Col>
-                    <Col xs={6}>
-                        Content on right half of screen
-                    </Col>
-                </Row>
-            </Grid>
+			<div style={{ height: 500 }} className="ag-theme-balham" >
+					<AgGridReact
+						columnDefs={[{headerName: "test", field: "a"}]}
+						rowData={[{a: 5}]}
+					/>
+			</div>
         );
     }
 }
